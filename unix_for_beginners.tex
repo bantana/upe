@@ -57,38 +57,34 @@ UNIX 工作在 \upeterm{全双工} (full duplex) 模式下, 也就是说用户�
 是有时候, 比如用户在输入密码, 此时用户输入的字符就不会出现在屏幕上.
 
 键盘上的大多数字符都是普通的可打印字符, 它们本身没有特殊的意义. 少数字符会
-告诉计算机如何解释用户的输入, 其中最重要的是回车 (RETURN) 键. 回车键宣告一行
+告诉计算机如何解释用户的输入, 其中最重要的是 RETURN 键. RETURN 键宣告一行
 输入的结束, 然后系统通过把终端的光标移动到下一行的开始来回显刚输入的那行数据.
-为了让系统解释用户输入的字符, 必须先按下回车键.
+为了让系统解释用户输入的字符, 必须先按下 RETURN 键.
 
-回车键属于 \upeterm{控制字符} (control character). 控制字符是一种不可见的字
-符, 它们可以控制终端输入与输出的某些行为. 在一台设置合理的终端上, 回车
+RETURN 键属于 \upeterm{控制字符} (control character). 控制字符是一种不可见的字
+符, 它们可以控制终端输入与输出的某些行为. 在一台设置合理的终端上, RETURN
 拥有一个属于自己的独立按键, 但是其他大多数控制字符就没有这种待遇, 作为替代,
-在输入它们之前要先按下控制 (CONTROL) 键 (除了 CONTROL, 还可以叫作 CTL,
-CNTL 或 CTRL), 然后再按下另一个按键, 通常是一个英文字母. 例如, 回车既可以通过
-按回车键输入, 也可以通过先按下控制键, 再按下 \texttt{m} 来输入. 因此, 回车
+在输入它们之前要先按下 CONTROL 键 (除了 CONTROL, 还可以叫作 CTL,
+CNTL 或 CTRL), 然后再按下另一个按键, 通常是一个英文字母. 例如, RETURN 既可以通过
+按 RETURN 键输入, 也可以通过先按下 CONTROL 键, 再按下 \texttt{m} 来输入. 因此,
+RETURN
 也可以称为 control-m, 写作 \upectl{m}. 其他的控制字符包括 \upectl{d} ---
 通知程序输入已结束; \upectl{g} --- 通知终端响铃; \upectl{h}, 也叫退格键,
-可以用来纠正打字错误; \upectl{i}, 经常叫作制表符,
-\textit{ctl}-i, often called tab, which advances the cursor to the next tab
-stop, much as on a regular typewriter. Tab stops on UNIX systems are eight
-spaces apart. Both the backspaces and tab characters have their keys on the
-terminals.
+可以用来纠正打字错误; \upectl{i}, 经常叫作制表符, 它把光标移动到下一个制表停
+止位, 打字机用得比较多. 在 UNIX 系统中, 制表停止位之间相隔 8 个空格. 退格符
+与制表符在终端上都有相应的按键.
 
-Two other keys have special meaning: DELETE, sometimes called RUBOUT or some
-abbreviation, and BREAK, sometimes called INTERRUPT. On most UNIX systems, the
-DELETE key stops a program immediately, without waiting for it to finish. On
-some systems, \textit{ctl}-c provides this device. And on some systems,
-depending on how the terminals are connected, BREAK is synonym for DELETE or
-\textit{ctl}-c.
+另外两个具有特殊含义的按键是 DELETE (有时候也叫作 RUBOUT, 或其他一些简写形式)
+与 BREAK (有时候也叫作 INTERRUPT). 在大多数 UNIX 系统中, DELETE 会马上停止
+程序, 而不用等它运行结束, 有些系统通过 \upectl{c} 完成这个功能. 还有些系统,
+根据终端的连接方式, BREAK 其实就是 DELETE 或 \upectl{c} 的同义词.
 
+\subsection{一次 UNIX 会话}
+\label{subsec:a_session_with_unix}
 
-\subsection{A Session with UNIX}
-
-Let's begin with an annotated dialog between you and your UNIX system.
-Throughout the examples in this book, what you type is printed in slanted
-letters, computer responses are in typewriter-style characters, and explanations
-are in \textit{italics}.
+接下来, 我们将以一次用户同 UNIX 系统之间的对话作为开始, 为了方便, 对话中会加入
+注解. 对于书中的全部例子, 用户输入的内容用等宽斜体表示, 系统的输出信息用等宽
+字体, 注解用斜体.
 
 \begin{verbatim}
         Establish a connection: dial a phone or turn on a switch as necessary.
