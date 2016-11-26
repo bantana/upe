@@ -86,42 +86,39 @@ RETURN
 注解. 对于书中的全部例子, 用户输入的内容用等宽斜体表示, 系统的输出信息用等宽
 字体, 注解用斜体.
 
-\begin{verbatim}
-        Establish a connection: dial a phone or turn on a switch as necessary.
-        Your system should say
-        login: you                 Type your name, then press RETURN
-        Password:                  Your password won't be echoed as you type it
-        You have mail.             There's mail to be read after you log in
-        $                          The system is now ready for your commands
-        $                          Press RETURN a couple of times
-        $ date                     What is the date and time?
-        Sun Sep 25 23:02:57 EDT 1983
-        $ who                      Who's using the computer?
-        jlb      ttyO    Sep 25 13:59
-        you      tty2    Sep 25 23:01
-        mary     tty4    Sep 25 19:03
-        doug     tty5    Sep 25 19:22
-        egb      tty7    Sep 25 17:17
-        bob      tty8    Sep 25 20:48
-        $ mail                     Read your mail
-        From doug Sun Sep 25 20:53 EDT 1983
-        give me a call sometime monday
+\begin{upeshell}
+^\upeexp{Establish a connection: dial a phone or turn on a switch as necessary.}^
+^\upeexp{Your system should say}^
+login: ^\upein{you}^		^\upeexp{Type your name, then press RETURN}^
+Password:		^\upeexp{Your password won't be echoed as you type it}^
+You have mail.		^\upeexp{There's mail to be read after you log in}^
+$			^\upeexp{The system is now ready for your commands}^
+$			^\upeexp{Press RETURN a couple of times}^
+$ ^\upein{date}^			^\upeexp{What is the date and time?}^
+Sun Sep 25 23:02:57 EDT 1983
+$ ^\upein{who}^			^\upeexp{Who's using the computer?}^
+jlb      ttyO    Sep 25 13:59
+you      tty2    Sep 25 23:01
+mary     tty4    Sep 25 19:03
+doug     tty5    Sep 25 19:22
+egb      tty7    Sep 25 17:17
+bob      tty8    Sep 25 20:48
+$ ^\upein{mail}^			^\upeexp{Read your mail}^
+From doug Sun Sep 25 20:53 EDT 1983
+give me a call sometime monday
 
-        ?                          RETURN moves on to the next message
-        From mary Sun Sep 25 19:07 EDT 1983     Next message
+?			^\upeexp{RETURN moves on to the next message}^
+From mary Sun Sep 25 19:07 EDT 1983	^\upeexp{Next message}^
 
-        ? d                        Delete this message
-        $                          No more mail
-        $ mail mary                Send mail to mary
-        lunch at 12 is fine
-        ctl-d                      End of mail
-        $                          Hang up phone or turn off terminal
-                                   and that's the end
-\end{verbatim}
-Sometimes that's all there is to a session, though occasionally people do some
-work too. The rest of this section will discuss the session above, plus other
-programs that make it possible to do useful things.
-
+? ^\upein{d}^		^\upeexp{Delete this message}^
+$			^\upeexp{No more mail}^
+$ ^\upein{mail mary}^		^\upeexp{Send mail to mary}^
+lunch at 12 is fine
+^\textrm{\textit{ctl}}\upein{-d}^			^\upeexp{End of mail}^
+$			^\upeexp{Hang up phone or turn off terminal}^
+			^\upeexp{and that's the end}^
+\end{upeshell}
+有时候, 这就是一次会话的全部内容, 当然, 用户可能还会做一些其他工作.
 
 \subsection{Logging in}
 

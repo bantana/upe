@@ -16,6 +16,7 @@
 \usepackage{listings}
 \usepackage{multicol}
 \usepackage{tocloft}
+\usepackage{listings}
 
 % 脚注编号带圈
 \renewcommand\thefootnote{\ding{\numexpr171+\value{footnote}}}
@@ -71,6 +72,22 @@
 \setsansfont{FreeSans}
 % "Mapping={}" make quote symbol straight
 \setmonofont[Mapping={}]{FreeMono}
+
+% input of user
+\newcommand\upein[1]{\textit{\texttt{#1}}}
+% explanation
+\newcommand\upeexp[1]{\textit{\textrm{#1}}}
+% shell 环境
+% FIXME: 注解对齐
+\lstnewenvironment{upeshell}
+    {
+	\lstset{
+		basicstyle = \ttfamily,
+		tabsize = 8,
+		escapeinside={\^\^},
+	}
+    }
+    {}
 
 \title{UNIX 编程环境}
 \author{Brian W. Kernighan
