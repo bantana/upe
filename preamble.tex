@@ -58,6 +58,11 @@
 \settowidth\cftchapnumwidth{第几十几章} % 最宽的可能编号
 \renewcommand\cftchapaftersnumb{\hspace{2.2em}} % 额外间距
 
+% 术语
+\newcommand\upeterm[1]{{\CJKfamily{heiti}{#1}}}
+% 控制字符记法
+\newcommand\upectl[1]{\textit{ctl}-\texttt{#1}}
+
 % from package fontspec and xeCJK
 \setCJKmainfont{AR PL UMing CN}
 \setCJKsansfont{AR PL UMing CN}

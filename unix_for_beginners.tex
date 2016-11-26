@@ -1,4 +1,4 @@
-\chapter{UNIX for Beginners}
+\chapter{入门}
 \label{chap:unix_for_beginners}
 
 什么是 UNIX? 从狭义上来说, 它是一个分时操作系统内核. 内核是一种计算机程序,
@@ -31,53 +31,45 @@ UNIX 时, 其上下文语境足以指明它的具体含义.
 如果读者曾经使用过 UNIX 系统, 那么本章的大部分内容都会感到很熟悉, 此时读者可
 以直接从第 \ref{chap:the_file_system} 章开始阅读.
 
-You will need a copy of the \textit{UNIX Programmer's Manual}, even as you read
-this chapter; it's often easier for us to tell you to read about something in
-the manual than to repeat its contents here. This book is not supposed to
-replace it, but to show you how to make best use of the commands described in
-it. Furthermore, there may be differences between what we say here and what is
-true on your system. The manual has a permuted index at the beginning that's
-indispensable for finding the right programs to apply to a problem; learn to use
-it.
+即使是在阅读这一章, 读者也需要准备一份 \textit{UNIX Programmer's Manual},
+与其在书中重复手册的内容, 还不如让读者自己去阅读手册来得方便. 本书的目标并
+非取代手册, 而是向读者展示如何有效地使用手册中所介绍的命令. 另外, 我们介绍
+的内容可能与读者所用的系统稍有不同. 手册的开头有一份排序了的索引, 通过该索引
+读者可以快速地找到自己想要的程序.
 
-Finally, a word of advice: don't be afraid to experiment. If you are a beginner,
-there are very few accidental things you can do to hurt yourself or other
-users. So learn how things work by trying them. This is a long chapter, and the
-best way to read it is a few pages at a time, trying things out as you go.
+最后提个建议: 不要害怕实验. 对于初学者来说, 不太可能出现一些能够伤害到他人
+或自己的意外, 所以请通过实践来学习书中的内容. 这一章很长, 最好的方式是每次
+只阅读几页, 然后在自己的系统中尝试一遍.
 
+\section{开始}
+\label{sec:getting_started}
 
-\section{Getting Started}
-\subsection{Some prerequisites about terminals and typing}
+\subsection{终端与键盘输入的一些必要条件}
+\label{subsec:some_prerequisites_about_terminals_and_typing}
 
-To avoid explaining everything about using computers, we must assume you have
-some familiarity with computer terminals and how to use them. If any of the
-following statements are mystifying, you should ask a local expert for help.
+为了避免解释计算机操作过程中的方方面面, 我们假设读者已经具备了计算机终端的
+基础知识, 并且知道如何使用它们, 如何读者对下面的内容感到疑惑, 请咨询相应地
+专家.
 
-The UNIX system is \textit{full duplex}: the characters you type on the keyboard
-are sent to the system, which sends them back to the terminal to be printed on
-the screen. Normally, this \textit{echo} process copies the characters directly
-to the screen, so you can see what you are typing, but sometimes, such as when
-you are typing a secret password, the echo is turned off so the characters do
-not appear on the screen.
+UNIX 工作在 \upeterm{全双工} (full duplex) 模式下, 也就是说用户通过键盘按下
+的字符会被发送到系统中, 而系统也会把这些字符发送到终端上, 从而显示在屏幕中.
+通常情况下, 这个 \upeterm{回显} (echo) 过程只是把字符直接复制到屏幕上, 但
+是有时候, 比如用户在输入密码, 此时用户输入的字符就不会出现在屏幕上.
 
-Most of the keyboard characters are ordinary printing characters with no special
-significance, but a few tell the computer how to interpret your typing. By far
-the most important of these is the RETURN key. The RETURN key signifies the end
-of a line of input; the system echoes it by moving the terminal's cursor to the
-beginning of the next line on the screen. RETURN must be pressed before the
-system will interpret the characters you have types.
+键盘上的大多数字符都是普通的可打印字符, 它们本身没有特殊的意义. 少数字符会
+告诉计算机如何解释用户的输入, 其中最重要的是回车 (RETURN) 键. 回车键宣告一行
+输入的结束, 然后系统通过把终端的光标移动到下一行的开始来回显刚输入的那行数据.
+为了让系统解释用户输入的字符, 必须先按下回车键.
 
-RETURN is an example of a \textit{control character} --- an invisible character
-that controls some aspect of input and output on the terminal. On any reasonable
-terminal, RETURN has a key of its own, but most control characters do
-not. Instead, they must be typed by holding down the CONTROL key, sometimes
-called CTL or CNTL or CTRL, then pressing another key, usually a letter. For
-example, RETURN may be typed by pressing the RETURN key or, equivalently,
-holding down the CONTROL key and typing an `m'. RETURN might therefore be called
-a control-m, which we will write as \textit{ctl}-m. Other control characters
-include \textit{ctl}-d, which tells a program that there is no more input;
-\textit{ctl}-g, which rings the bell on the terminal; \textit{ctl}-h, often
-called backspace, which can be used to correct typing mistakes; and
+回车键属于 \upeterm{控制字符} (control character). 控制字符是一种不可见的字
+符, 它们可以控制终端输入与输出的某些行为. 在一台设置合理的终端上, 回车
+拥有一个属于自己的独立按键, 但是其他大多数控制字符就没有这种待遇, 作为替代,
+在输入它们之前要先按下控制 (CONTROL) 键 (除了 CONTROL, 还可以叫作 CTL,
+CNTL 或 CTRL), 然后再按下另一个按健, 通常是一个英文字母. 例如, 回车既可以通过
+按回车键输入, 也可以通过先按下控制键, 再按下 \texttt{m} 来输入. 因此, 回车
+也可以称为 control-m, 写作 \upectl{m}. 其他的控制字符包括 \upectl{d} ---
+通知程序输入已结束; \upectl{g} --- 通知终端响铃; \upectl{h}, 也叫退格键,
+可以用来纠正打字错误; \upectl{i}, 经常叫作制表符,
 \textit{ctl}-i, often called tab, which advances the cursor to the next tab
 stop, much as on a regular typewriter. Tab stops on UNIX systems are eight
 spaces apart. Both the backspaces and tab characters have their keys on the
