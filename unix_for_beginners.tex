@@ -122,59 +122,54 @@ $			^\upeexp{Hang up phone or turn off terminal}^
 			^\upeexp{and that's the end}^
 \end{upeshell}
 有时候, 这就是一次会话的全部内容, 当然, 用户可能还会做一些其他工作.
+\marginpar{4}
+本节的剩下部分会对上面的会话进行详细解释, 除此之外, 还将介绍几个能完成
+实际工作的程序.
 
-\subsection{Logging in}
+\subsection{登录}
+\label{subsec:logging_in}
 
-You must have a login name and password, which you can get from your system
-administrator. The UNIX system is capable of dealing wit a wide variety of
-terminals, but it is strongly oriented towards devices with lower case; case
-distinctions matter! If your terminal produces only upper case (like some video
-and portable terminals), life will be so difficult that you should look for
-another terminal.
+为了登录系统, 读者须向系统管理员申请用户名与密码. UNIX 支持多种终端, 但最
+好是支持小写字母, 并区分大小写的终端. 如果读者的终端只支持大写字母 (比如
+视频和可移植终端), 那么操作起来将会非常麻烦, 最好换一个终端.
 
-Be sure the switches are set appropriately on your device: upper and lower case,
-full duplex, and any other settings that local experts advise, such as the
-speed, or \textit{baud rate}. Establish a connection using whatever magic is
-needed for your terminal; this may involve dialing a telephone or merely
-flipping a switch. In either case, the system should type
-\begin{verbatim}
-        login:
-\end{verbatim}
-If it types garbage, you may be at the wrong speed; check the speed setting and
-other switches. If that fails, press the BREAK or INTERRUPT key a few times,
-slowly. If nothing produces a login message, you will have to get help.
+在登录之前要确认设备的电路开关已经设置妥当: 区分大小写, 全双工, 以及管理员
+建议的其他设置, 比如 \upeterm{波特率}. 尽你的一切所能为终端建立一个连接,
+这中间可能还会涉及到拨号和翻转开关等操作. 无论如何, 系统最终应该输出:
+\begin{upeshell}
+login:
+\end{upeshell}
+如果输出了垃圾信息, 那可能是波特率设置得有误, 检查一下波特率和其他开关. 如果
+还不行, 就缓慢地按几下 BREAK 和 INTERRUPT. 如果还是看不到登录信息, 就向管理
+员寻求帮助.
 
-When you get the \verb=login:= message, type your login name \textit{in lower
-  case}. Follow it by pressing RETURN. If a password is required, you will be
-asked for it, and printing will be turned off while you type it.
+看到 \texttt{login:} 后, 输入用户名, 再按下 RETURN. 如果还需要密码, 系统就
+会要求用户输入密码, 在输入密码的过程中, 回显被关闭.
 
-The culmination of your login efforts is a \textit{prompt}, usually a single
-character, indicating that the system is ready to accept commands from you. The
-prompt is mostly likely to be a dollar sign \verb=$= or a percent sign \verb=%=,
-but you can change it to anything you like; we'll show you how a little
-later. The prompt is actually printed by a program called the \textit{command
-  interpreter} or \textit{shell}, which is your main interface to the system.
+登录完成后将会看到 \upeterm{命令提示符} (prompt), 命令提示符通常就是一个字
+符, 表示系统现在已经准备好接收用户的输入. 最常用作提示符的字符是美元符
+\verb'$' 和百分号 \verb'%', 不过用户可以把提示符设置成任意内容, 稍后我们就
+会介绍如何设置. 实际上, 打印提示符的是一个程序, 这个程序叫作
+\upeterm{命令解释器} (command interpreter) 或 \textit{shell}, 它是用户同
+系统交互的主要接口.
 
-There may be a message of the day just before the prompt, or a notification that
-you have mail. You may also be asked what kind of terminal you are using; your
-answer helps the system to use any special properties the terminal might have.
+在提示符之前, 可能还会看到日期, 或者是通知用户有邮件未读. 系统可能还会询问
+终端的类型, 用户的回答可以帮助系统设置终端的属性.
 
+\subsection{键入命令}
+\label{subsec:typing_commands}
 
-\subsection{Typing commands}
-
-Once you receive the prompt, you can type commands, which are requests that the
-system do something. We will use \textit{program} as a synonym for
-\textit{command}. When you see the prompt (let's assume it's \verb=$=), type
-date and press RETURN. the system should replay with the date and time, then
-print another prompt, so the whole transaction will look like this on your
-terminal:
-\begin{verbatim}
-        $ date
-        Mon Sep 26 12:20:57 EDT 1983
-        $
-\end{verbatim}
-Don't forget RETURN, and don't type the \verb=$=. If you think you're being
-ignored, press RETURN; something should happen. RETURN won't be mentioned again,
+看到提示符后就可以键入 \upeterm{命令} (command), 通过命令, 用户可以请求系统
+做一些工作. 我们将使用 \upeterm{程序} (program) 作为命令的同义词. 看到提示
+符 (假设提示符就是 \verb'$') 后, 键入 \texttt{date}, 再按下 RETURN, 系统就会
+打印当前的日期和时间, 然后是另一个提示符. 在终端中, 整个事务的过程就像下面
+这样:
+\begin{upeshell}
+$ ^\upein{date}^
+Mon Sep 26 12:20:57 EDT 1983
+\end{upeshell}
+不要忘记 RETURN, 也不要键入 \verb'$'. 如果用户觉得自己被系统忽略了,
+press RETURN; something should happen. RETURN won't be mentioned again,
 but you need it at the end of every line.
 
 The next command to try is who, which tells you everyone who is currently logged
