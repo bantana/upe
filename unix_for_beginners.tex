@@ -169,39 +169,36 @@ $ ^\upein{date}^
 Mon Sep 26 12:20:57 EDT 1983
 \end{upeshell}
 不要忘记 RETURN, 也不要键入 \verb'$'. 如果用户觉得自己被系统忽略了,
-press RETURN; something should happen. RETURN won't be mentioned again,
-but you need it at the end of every line.
+\marginpar{5}
+就按下 RETURN, 这时应该会有所变化. 在后面的内容中我们不再提及 RETURN,
+但是用户要记得每输完一行后, 都要按下 RETURN.
 
-The next command to try is who, which tells you everyone who is currently logged
-in:
-\begin{verbatim}
-        $ who
-        rim     tty0     Sep 26 11:37
-        pjw     tty4     Sep 26 11:30
-        gerard  tty7     Sep 26 10:27
-        mark    tty9     Sep 26 07:59
-        you     ttya     Sep 26 12:20
-        $
-\end{verbatim}
-The first column is the user name. The second is the system's name for the
-connection being used (``tty'' stands for ``teletype,'' an archaic synonym for
-``terminal''). The rest tells when the user logged on. You might also try
-\begin{verbatim}
-        $ who am i
-        you     ttya     Sep 26 12:20
-        $
-\end{verbatim}
+下一个要介绍的命令是 \texttt{who}, 它会打印当前已登录的所有用户:
+\begin{upeshell}
+$ ^\upein{who}^
+rlm	tty0	Sep 26 11:17
+pjw	tty4	Sep 26 11:30
+gerard	tty7	Sep 26 10:27
+mark	tty9	Sep 26 07:59
+you	ttya	Sep 26 12:20
+\end{upeshell}
+第 1 列是用户名, 第 2 列是用户所使用的连接在系统中的名字 (tty 表示 teletype,
+是 terminal 的同义词), 剩下的内容是登录时间. 读者可以试一下:
+\begin{upeshell}
+$ ^\upein{who am i}^
+you	ttya	Sep 26 12:20
+$
+\end{upeshell}
 
-If you make a mistake typing the name of a command, and refer to a non-existent
-command, you will be told that no command of that name can be found:
-\begin{verbatim}
-        $ whom                     Misspelled command name ...    
-        whom: not found            ... so system didn't know how to run it
-        $
-\end{verbatim}
-Of course, if you inadvertently type the name of an actual command, it will run,
-perhaps with mysterious results.
-
+如果用户输错了命令的名字, 而错误的名字引用了一个不存在的命令, 那么系统就
+会告知用户找不到对应的命令:
+\begin{upeshell}
+$ ^\upein{whom}^			^\upeexp{Misspelled command name}^
+whom: not found			^\upeexp{So system didn't know how to run it}^
+$
+\end{upeshell}
+当然, 如果用户不小心输入了另一个命令的名字, 那么命令也会正常执行, 只不过执行
+结果可能跟想像中的不一样.
 
 \subsection{Strange terminal behavior}
 
