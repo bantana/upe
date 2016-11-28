@@ -200,26 +200,23 @@ $
 当然, 如果用户不小心输入了另一个命令的名字, 那么命令也会正常执行, 只不过执行
 结果可能跟想像中的不一样.
 
-\subsection{Strange terminal behavior}
+\subsection{奇怪的终端行为}
+\label{subsec:strange_terminal_behavior}
 
-Sometimes your terminal will act strangely, for example, each letter may be
-typed twice, or RETURN may not put the cursor at the first column of the next
-line. You can usually fix this by turning the terminal off and on, or by logging
-out and logging back in. Or you can read the description of the command
-\texttt{stty} (``set terminal options'') in Section 1 of the manual. To get
-intelligent treatment of tab characters if your terminal doesn't have tabs, type
-the command
-\begin{verbatim}
-        $ stty -tabs
-\end{verbatim}
-and the system will convert tabs into the right number of spaces. If your
-terminal does have computer-settable tab stops, the command tabs will set them
-correctly for you. (You may actually have to say
-\begin{verbatim}
-        $ tabs terminal-type
-\end{verbatim}
-to make it work --- see the \texttt{tabs} command description in the manual.)
-
+有时候终端的表现可能会有异常, 比如每一个字符都显示两次, 又或者是 RETURN
+没有把光标移动到下一行的第一列. 这些问题通常可以通过关闭再打开终端, 或注销
+后再登录来解决, 另一种办法是阅读手册第 1 节中, 关于命令 \texttt{stty} (set
+terminal options) 的介绍. 如果用户的终端没有制表符, 为了能让它恰当地处理
+制表符, 键入:
+\begin{upeshell}
+$ ^\upein{stty -tabs}^
+\end{upeshell}
+之后系统就会自动地把制表符转换成对应个数的空格. 如果用户的终端支持计算机可
+配置的制表停止位, 命令 \texttt{tabs} 就可以帮你完成停止位的设置:
+\begin{upeshell}
+$ ^\upein{tabs}^ ^\upearg{terminal-type}^
+\end{upeshell}
+阅读手册以获取命令 \texttt{tabs} 的使用方法.
 
 \subsection{Mistakes in typing}
 \subsection{Type-ahead}
