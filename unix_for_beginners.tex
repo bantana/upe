@@ -218,18 +218,38 @@ $ ^\upein{tabs}^ ^\upearg{terminal-type}^
 \end{upeshell}
 阅读手册以获取命令 \texttt{tabs} 的使用方法.
 
-\subsection{Mistakes in typing}
-\subsection{Type-ahead}
-\subsection{Stopping a program}
-\subsection{Logging out}
-\subsection{Mail}
-\subsection{Writing to other users}
-\subsection{News}
-\subsection{The manual}
-\subsection{Computer-aided instruction}
-\subsection{Games}
+\subsection{纠正拼写错误}
+\label{subsec:mistakes_in_typing}
 
-\section{Day-to-day use: files and common commands}
-\section{More about files: directories}
-\section{The shell}
-\section{The rest of the UNIX system}
+如果用户在按下 RETURN 之前发现自己的输入有误, 这时候有两种解决办法: 一个一个
+地擦除 (erase) 字符, 或者是删除 (kill) 一整行, 然后重新输入.
+
+如果用户输入了 \upeterm{删行} (line kill) 字符 (默认是 \verb'@'), 那么整行
+都会被丢弃, 然后在新的一行开始:
+\begin{upeshell}
+$ ^\upein{ddtae@}^	^\upeexp{Completely botched; start over on a new line}^
+^\upein{date}^
+Mon Sep 26 12:23:39 EDT 1983
+$
+\end{upeshell}
+
+符号 \verb'#' 擦除最后一次输入的字符, 每一个 \verb'#' 都可以擦除一个对应的字
+符. 如果用户输入的命令含有错误, 可以通过插入 \verb'#' 来纠正:
+\begin{upeshell}
+$ ^\upein{dd\#atte\#\#e}^		^\upeexp{Fix it as you go}^
+Mon Sep 26 12:23:39 EDT 1983
+$
+\end{upeshell}
+
+擦除和删行字符非常依赖于系统. 许多系统 (包括我们现在用的) 把擦除符改为退格
+键, 它在视频终端中工作地非常好. 用户可以用下面的方法来判断系统用的是擦除符
+还是退格键:
+\begin{upeshell}
+$ ^\upein{datee\textleftarrow}^	^\upeexp{Try \textleftarrow}^
+$ datee\textleftarrow: not found ^\upeexp{It's not \textleftarrow}^
+$ ^\upein{datee\#}^		^\upeexp{Try \#}^
+Mon Sep 26 12:26:08 EDT 1983	^\upeexp{It is \#}^
+$
+\end{upeshell}
+(我们把退格键打印成 \textleftarrow, 这样读者就可以看到它们.) 另一种删除整行
+的办法是 \upectl{u}.
