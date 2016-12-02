@@ -17,6 +17,7 @@
 \usepackage{multicol}
 \usepackage{tocloft}
 \usepackage{listings}
+\usepackage{theorem}
 
 % 脚注编号带圈
 \renewcommand\thefootnote{\ding{\numexpr171+\value{footnote}}}
@@ -90,6 +91,12 @@
 	}
     }
     {}
+
+% 习题环境
+% TODO: 习题编号以减号分隔, 而非点号
+\theoremstyle{plain}
+\theorembodyfont{\normalfont}
+\newtheorem{upeexer}{习题}[chapter]
 
 \title{UNIX 编程环境}
 \author{Brian W. Kernighan
