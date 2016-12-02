@@ -268,3 +268,37 @@ $
 用户输入的字符在到达目的地之前, 会被一系列程序检查和解释. 解释的方式不仅取
 \marginpar{7}
 决于输入字符的目的地, 还和到达的方式有关.
+
+用户键入的每一个字符都会立即回显在终端中, 除非终端关闭了回显, 不过这种情况
+比较少见. 在按下 RETURN 之前, 键入的字符会暂时保留在内核里, 因此我们才能通过
+擦除和删行字符来纠正拼写错误. 如果擦除或删行字符带有前导的反斜杠, 则内核会
+丢弃反斜杠, 并不作解释地存放反斜杠的下一个字符.
+
+按下 RETURN 后, 字符被发送给正在读取终端的程序, 这个程序可能会接着按照它自己
+的方式对字符加以解释, 例如, 如果一个字符带有前导的反斜杠, 则 shell 就不会按
+照特殊的方式解释该字符, 我们会在第 \ref{chap:using_the_shell} 章接着讨论这
+部分内容. 现在读者只需要记住: 内核会处理擦除与删行字符, 以及带有前导反斜杠
+的擦除与删行字符; 剩下的字符会接着被其他程序解释.
+
+\begin{upeexer}
+执行下面的命令, 推测出将要发生的现象:
+\begin{upeshell}
+$ ^\upein{date\textbackslash{}@}^
+\end{upeshell}
+\end{upeexer}
+
+\begin{upeexer}
+大多数 shell (即使不是第 7 版的 shell) 把 \verb'#' 当成注释的开始, 它会忽略
+从 \verb'#' 到行末的所有字符. 假设系统的擦除字符也是 \verb'#', 请根据前面
+的话, 解释下面的命令执行结果:
+\begin{upeshell}
+$ ^\upein{date}^
+Mon Sep 26 12:39:56 EDT 1983
+$ ^\upein{\#date}^
+Mon Sep 26 12:40:21 EDT 1983
+$ ^\upein{\textbackslash\#date}^
+$ ^\upein{\textbackslash\textbackslash\#date}^
+#date: not found
+$
+\end{upeshell}
+\end{upeexer}
