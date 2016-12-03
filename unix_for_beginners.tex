@@ -302,3 +302,20 @@ $ ^\upein{\textbackslash\textbackslash\#date}^
 $
 \end{upeshell}
 \end{upeexer}
+
+\subsection{提前输入}
+\label{subsec:type_ahead}
+
+即使内核正在忙于处理其他事情, 它也会读取用户键入的字符, 所以说就算有其他命令
+正在往终端上打印消息, 用户也可以照常输入. 如果在输入的同时, 系统正在打印消息,
+那么用户的输入就会和终端的输出相混淆, 但是它们仍然可以准确无误地输送到内核中.
+用户可以在上一条命令未结束, 甚至还未开始的情况下, 就可以接着输入下一条命令.
+
+\subsection{暂停程序}
+\label{subsec:stopping_a_program}
+
+键入 DELETE 字符可以暂停大部分命令. 在大部分终端上, BREAK 键也可以完成相同的
+功能, 但是具体的行为依赖于系统. 对于少数几个程序, 例如文本编辑器, DELETE
+会暂停程序, 但用户仍然会留在程序中, 不能离开. 关闭终端或挂断电话会暂停大多数
+\marginpar{8}
+程序.
