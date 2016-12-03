@@ -319,3 +319,52 @@ $
 会停止程序, 但用户仍然会留在程序中, 不能离开. 关闭终端或挂断电话会停止大多数
 \marginpar{8}
 程序.
+
+如果用户只是想暂停输出, 例如程序正在往终端打印一些重要的信息, 键入 \upectl{s},
+输入就会马上停止, 程序也会被挂起, 直到用户输入 \upectl{q}, 程序才会继续执行.
+
+\subsection{注销}
+\label{subsec:logging_out}
+
+注销登录比较恰当的做法是键入 \upectl{d}, 而不是执行某条命令. \upectl{d} 通知
+shell 不会再有输入数据 (具体的过程在下一章介绍). 用户也可以关闭终端或挂断电
+话, 但这是否会真正地注销登录则取决于系统.
+
+\subsection{邮件}
+\label{subsec:mail}
+
+UNIX 提供了用于和其他用户通信的邮件系统, 所以用户在登录后, 可能会看到这样一
+条消息:
+\begin{upeshell}
+You have a mail.
+\end{upeshell}
+为了读取邮件, 键入
+\begin{upeshell}
+$ ^\upein{mail}^
+\end{upeshell}
+邮件会陆续打印出来, 一次打印一封, 后收到的邮件先打印. 打印完一封邮件后,
+\texttt{mail} 等待用户的响应, 比较常用的两个响应命令是 \texttt{d} --- 删除
+邮件; 以及 RETURN --- 不删除. 其他的响应命令还有 \texttt{p} --- 重新打印邮件;
+\texttt{s }\textit{filename} --- 把邮件保存到以 \texttt{filename} 命名的文件
+中 (如果读者不清楚什么是文件, 可以把它当作一个可以存放数据的地方, 它有一
+个名字, 通过这个名字就可以找到对应的文件. 文件在
+\ref{subsec:day_to_day_use_files_and_common_commands} 节介绍, 它是本书的重
+点概念之一).
+
+\texttt{mail} 命令有多种变体, 用户所用的 \texttt{mail} 可能和我们这里描述的
+不一样, 具体的使用方法请参考相应的手册.
+
+向某人发送邮件的过程非常简单直接, 假设我们要向用户 \texttt{nico} 发送一封邮
+件, 最简单的办法是:
+\begin{upeshell}
+$ ^\upein{mail nico}^
+^\upeexp{Now type in the text of the letter}^
+^\upeexp{on as many line as you like ...}^
+^\upeexp{After the last line of the letter}^
+^\upeexp{type a control-d}^
+^\textit{\textrm{ctl}}\upein{-d}^
+$
+\end{upeshell}
+\upectl{d} 通知 \texttt{mail} 输入已经结束. 如果用户改变了心意, 键入 DELETE,
+而非 \upectl{d}, 这时未写完的邮件内容会存放在名为 \texttt{dead.letter} 的
+文件中, 不会发给 \texttt{nico}.
