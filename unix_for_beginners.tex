@@ -368,3 +368,40 @@ $
 \upectl{d} 通知 \texttt{mail} 输入已经结束. 如果用户改变了心意, 键入 DELETE,
 而非 \upectl{d}, 这时未写完的邮件内容会存放在名为 \texttt{dead.letter} 的
 文件中, 不会发给 \texttt{nico}.
+
+\marginpar{9}
+用户可以试着给自己发一封邮件, 然后再用 \texttt{mail} 读取 (虽然这个做法听起
+来有点奇怪, 但是能起到备忘录的作用).
+
+发送邮件还有很多种办法 --- 用户可以发送一封已经准备好了的信, 可以一次发给多
+个人, 还可以发给其他主机上的用户. \texttt{mail} 命令的所有细节都可以在
+\texttt{UNIX Programmer's Manual} 的第 1 节找到, 今后, 我们将用 \texttt{mail}
+(1) 表示手册的第 1 节中, 描述 \texttt{mail} 的内容, 本章介绍的所有命令都在
+手册的第 1 节.
+
+UNIX 系统还提供日历服务 (见 \texttt{calendar}(1)), 我们将在第
+\ref{chap:filters} 章介绍如何自己开发一个日历工具.
+
+\subsection{向其他用户发送信息}
+\label{subsec:writing_to_other_users}
+
+如果系统中同时有多个用户登录, 有一天, 你的终端可能会突然冒出类似下面的消息
+\begin{upeshell}
+Message from mary tty7...
+\end{upeshell}
+同时伴有一声响铃. 这表示用户 \texttt{mary} 想给你发送消息, 除非采取了显式
+的动作, 否则你无法回应 \texttt{mary}. 为了回应消息, 键入
+\begin{upeshell}
+$ ^\upein{write mary}^
+\end{upeshell}
+命令建立了一条双向的通信路径. 现在, Mary 在终端上输入的字符会同时显示在你的
+终端上, 反之亦然, 但是通信速度会比较慢.
+
+如果用户正处于程序运行的过程中, 但是此时你偏偏想要执行一条 shell 命令, 通
+常来说这时候就必须先让程序停止运行, 但是有一些程序 --- 例如文本编程器和
+\texttt{write} --- 它们提供了 `!' 命令, 用于临时跳脱到 shell 环境, 见附录
+\ref{apd:editor_summary} 的表 \ref{tabl:summary_of_ed_commands}.
+
+\texttt{write} 不对通信施加任何限制, 所以为了避免消息互相扰乱, 有必要遵守
+一些协议. 一个常用的规则是一条消息输入完毕后, 在末尾添加 \texttt{(o)}, 表示
+``over''; 如果想要退出会话, 就发送 \texttt{(oo)}, 表示 ``over and out''.
