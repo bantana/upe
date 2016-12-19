@@ -74,20 +74,17 @@
 % "Mapping={}" make quote symbol straight
 \setmonofont[Mapping={}]{FreeMono}
 
-% input of user
-\newcommand\upein[1]{\textit{\texttt{#1}}}
-% arguments of command
-\newcommand\upearg[1]{\textit{\textrm{#1}}}
-% explanation
-\newcommand\upeexp[1]{\textit{\textrm{#1}}}
 % shell 环境
-% FIXME: 注解对齐
+% FIXME: 连字符过长
 \lstnewenvironment{upeshell}
     {
 	\lstset{
+		flexiblecolumns,
 		basicstyle = \ttfamily,
 		tabsize = 8,
-		escapeinside={\^\^},
+        escapeinside = {++},
+		moredelim = [is][\rmfamily\itshape]{\#}{\#},
+		moredelim = [is][\slshape]{^}{^}
 	}
     }
     {}

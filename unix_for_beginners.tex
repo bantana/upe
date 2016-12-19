@@ -90,36 +90,36 @@ RETURN
 字体, 注解用斜体.
 
 \begin{upeshell}
-^\upeexp{Establish a connection: dial a phone or turn on a switch as necessary.}^
-^\upeexp{Your system should say}^
-login: ^\upein{you}^		^\upeexp{Type your name, then press RETURN}^
-Password:		^\upeexp{Your password won't be echoed as you type it}^
-You have mail.		^\upeexp{There's mail to be read after you log in}^
-$			^\upeexp{The system is now ready for your commands}^
-$			^\upeexp{Press RETURN a couple of times}^
-$ ^\upein{date}^			^\upeexp{What is the date and time?}^
+#Establish a connection: dial a phone or turn on a switch as necessary.#
+#Your system should say#
+login: ^you^			#Type your name, then press RETURN#
+Password:			#Your password won't be echoed as you type it#
+You have mail.			#There's mail to be read after you log in#
+$				#The system is now ready for your commands#
+$				#Press RETURN a couple of times#
+$ ^date^				#What is the date and time?#
 Sun Sep 25 23:02:57 EDT 1983
-$ ^\upein{who}^			^\upeexp{Who's using the computer?}^
+$ ^who^				#Who's using the computer?#
 jlb      tty0    Sep 25 13:59
 you      tty2    Sep 25 23:01
 mary     tty4    Sep 25 19:03
 doug     tty5    Sep 25 19:22
 egb      tty7    Sep 25 17:17
 bob      tty8    Sep 25 20:48
-$ ^\upein{mail}^			^\upeexp{Read your mail}^
+$ ^mail^				#Read your mail#
 From doug Sun Sep 25 20:53 EDT 1983
 give me a call sometime monday
 
-?			^\upeexp{RETURN moves on to the next message}^
-From mary Sun Sep 25 19:07 EDT 1983	^\upeexp{Next message}^
+?				#RETURN moves on to the next message#
+From mary Sun Sep 25 19:07 EDT 1983	#Next message#
 
-? ^\upein{d}^		^\upeexp{Delete this message}^
-$			^\upeexp{No more mail}^
-$ ^\upein{mail mary}^		^\upeexp{Send mail to mary}^
+? ^d^				#Delete this message#
+$				#No more mail#
+$ ^mail mary^			#Send mail to mary#
 lunch at 12 is fine
-^\textrm{\textit{ctl}}\upein{-d}^			^\upeexp{End of mail}^
-$			^\upeexp{Hang up phone or turn off terminal}^
-			^\upeexp{and that's the end}^
+^ctl-d^				#End of mail#
+$				#Hang up phone or turn off terminal#
+				#and that's the end#
 \end{upeshell}
 有时候, 这就是一次会话的全部内容, 当然, 用户可能还会做一些其他工作.
 \marginpar{4}
@@ -165,7 +165,7 @@ login:
 打印当前的日期和时间, 然后是另一个提示符. 在终端中, 整个事务的过程就像下面
 这样:
 \begin{upeshell}
-$ ^\upein{date}^
+$ ^date^
 Mon Sep 26 12:20:57 EDT 1983
 \end{upeshell}
 不要忘记 RETURN, 也不要键入 \verb'$'. 如果用户觉得自己被系统忽略了,
@@ -175,7 +175,7 @@ Mon Sep 26 12:20:57 EDT 1983
 
 下一个要介绍的命令是 \texttt{who}, 它会打印当前已登录的所有用户:
 \begin{upeshell}
-$ ^\upein{who}^
+$ ^who^
 rlm	tty0	Sep 26 11:17
 pjw	tty4	Sep 26 11:30
 gerard	tty7	Sep 26 10:27
@@ -185,7 +185,7 @@ you	ttya	Sep 26 12:20
 第 1 列是用户名, 第 2 列是用户所使用的连接在系统中的名字 (tty 表示 teletype,
 是 terminal 的同义词), 剩下的内容是登录时间. 读者可以试一下:
 \begin{upeshell}
-$ ^\upein{who am i}^
+$ ^who am i^
 you	ttya	Sep 26 12:20
 $
 \end{upeshell}
@@ -193,8 +193,8 @@ $
 如果用户输错了命令的名字, 而错误的名字引用了一个不存在的命令, 那么系统就
 会告知用户找不到对应的命令:
 \begin{upeshell}
-$ ^\upein{whom}^			^\upeexp{Misspelled command name}^
-whom: not found			^\upeexp{So system didn't know how to run it}^
+$ ^whom^				#Misspelled command name ...#
+whom: not found			#... So system didn't know how to run it#
 $
 \end{upeshell}
 当然, 如果用户不小心输入了另一个命令的名字, 那么命令也会正常执行, 只不过执行
@@ -209,12 +209,12 @@ $
 terminal options) 的介绍. 如果用户的终端没有制表符, 为了能让它恰当地处理
 制表符, 键入:
 \begin{upeshell}
-$ ^\upein{stty -tabs}^
+$ ^stty -tabs^
 \end{upeshell}
 之后系统就会自动地把制表符转换成对应个数的空格. 如果用户的终端支持计算机可
 配置的制表停止位, 命令 \texttt{tabs} 就可以帮你完成停止位的设置:
 \begin{upeshell}
-$ ^\upein{tabs}^ ^\upearg{terminal-type}^
+$ ^tabs^ #terminal-type#
 \end{upeshell}
 阅读手册以获取命令 \texttt{tabs} 的使用方法.
 
@@ -228,8 +228,8 @@ $ ^\upein{tabs}^ ^\upearg{terminal-type}^
 如果用户输入了 \upeterm{删行} (line kill) 字符 (默认是 \verb'@'), 那么整行
 都会被丢弃, 然后在新的一行开始:
 \begin{upeshell}
-$ ^\upein{ddtae@}^	^\upeexp{Completely botched; start over on a new line}^
-^\upein{date}^
+$ ^ddtae@^	#Completely botched; start over on a new line#
+^date^
 Mon Sep 26 12:23:39 EDT 1983
 $
 \end{upeshell}
@@ -237,7 +237,7 @@ $
 符号 \verb'#' 擦除最后一次输入的字符, 每一个 \verb'#' 都可以擦除一个对应的字
 符. 如果用户输入的命令含有错误, 可以通过插入 \verb'#' 来纠正:
 \begin{upeshell}
-$ ^\upein{dd\#atte\#\#e}^		^\upeexp{Fix it as you go}^
+$ ^dd#atte##e^			#Fix it as you go#
 Mon Sep 26 12:23:39 EDT 1983
 $
 \end{upeshell}
@@ -246,10 +246,10 @@ $
 键, 它在视频终端中工作地非常好. 用户可以用下面的方法来判断系统用的是擦除符
 还是退格键:
 \begin{upeshell}
-$ ^\upein{datee\textleftarrow}^	^\upeexp{Try \textleftarrow}^
-$ datee\textleftarrow: not found ^\upeexp{It's not \textleftarrow}^
-$ ^\upein{datee\#}^		^\upeexp{Try \#}^
-Mon Sep 26 12:26:08 EDT 1983	^\upeexp{It is \#}^
+$ ^datee^+\textleftarrow+				#Try #+\textleftarrow+
+$ datee+\textleftarrow+: not found		#It's not #+\textleftarrow+
+$ ^datee#^				#Try #+\#+
+Mon Sep 26 12:26:08 EDT 1983		#It is #+\#+
 $
 \end{upeshell}
 (我们把退格键打印成 \textleftarrow, 这样读者就可以看到它们.) 另一种删除整行
@@ -283,7 +283,7 @@ $
 \begin{upeexer}
 执行下面的命令, 推测出将要发生的现象:
 \begin{upeshell}
-$ ^\upein{date\textbackslash{}@}^
+$ ^date^+\textbackslash+^@^
 \end{upeshell}
 \end{upeexer}
 
@@ -292,13 +292,13 @@ $ ^\upein{date\textbackslash{}@}^
 从 \verb'#' 到行末的所有字符. 假设系统的擦除字符也是 \verb'#', 请根据前面
 的话, 解释下面的命令执行结果:
 \begin{upeshell}
-$ ^\upein{date}^
+$ ^date^
 Mon Sep 26 12:39:56 EDT 1983
-$ ^\upein{\#date}^
+$ ^#date^
 Mon Sep 26 12:40:21 EDT 1983
-$ ^\upein{\textbackslash\#date}^
-$ ^\upein{\textbackslash\textbackslash\#date}^
-#date: not found
+$ +\textbackslash+^#date^
+$ +\textbackslash\textbackslash+^#date^
++\texttt{\#}+date: not found
 $
 \end{upeshell}
 \end{upeexer}
@@ -340,7 +340,7 @@ You have a mail.
 \end{upeshell}
 为了读取邮件, 键入
 \begin{upeshell}
-$ ^\upein{mail}^
+$ ^mail^
 \end{upeshell}
 邮件会陆续打印出来, 一次打印一封, 后收到的邮件先打印. 打印完一封邮件后,
 \texttt{mail} 等待用户的响应, 比较常用的两个响应命令是 \texttt{d} --- 删除
@@ -357,12 +357,12 @@ $ ^\upein{mail}^
 向某人发送邮件的过程非常简单直接, 假设我们要向用户 \texttt{nico} 发送一封邮
 件, 最简单的办法是:
 \begin{upeshell}
-$ ^\upein{mail nico}^
-^\upeexp{Now type in the text of the letter}^
-^\upeexp{on as many line as you like ...}^
-^\upeexp{After the last line of the letter}^
-^\upeexp{type a control-d}^
-^\textit{\textrm{ctl}}\upein{-d}^
+$ ^mail nico^
+#Now type in the text of the letter#
+#on as many line as you like ...#
+#After the last line of the letter#
+#type a control-d#
++\textit{\textrm{ctl}}+^-d^
 $
 \end{upeshell}
 \upectl{d} 通知 \texttt{mail} 输入已经结束. 如果用户改变了心意, 键入 DELETE,
@@ -392,7 +392,7 @@ Message from mary tty7...
 同时伴有一声响铃. 这表示用户 \texttt{mary} 想给你发送消息, 除非采取了显式
 的动作, 否则你无法回应 \texttt{mary}. 为了回应消息, 键入
 \begin{upeshell}
-$ ^\upein{write mary}^
+$ ^write mary^
 \end{upeshell}
 命令建立了一条双向的通信路径. 现在, Mary 在终端上输入的字符会同时显示在你的
 终端上, 反之亦然, 但是通信速度会比较慢.
