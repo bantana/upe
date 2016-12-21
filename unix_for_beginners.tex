@@ -405,3 +405,55 @@ $ ^write mary^
 \texttt{write} 不对通信施加任何限制, 所以为了避免消息互相扰乱, 有必要遵守
 一些协议. 一个常用的规则是一条消息输入完毕后, 在末尾添加 \texttt{(o)}, 表示
 ``over''; 如果想要退出会话, 就发送 \texttt{(oo)}, 表示 ``over and out''.
+\marginpar{10}
+\begin{upeshell}
+#Mary's terminal:#			#Your terminal#
+$ ^write you^
+					$ Message from mary tty7...
+					^write mary^
+Message from you ttya...
+^did you forget lunch? (o)^
+					did you forget lunch? (o)
+					^five@^
+					^ten minutes (o)^
+ten minutes (o)
+^ok (oo)^
+					ok (oo)
+					+\textit{\textrm{ctl}}+^-d^
+EOF
++\textit{\textrm{ctl}}+^-d^
+					$ EOF
+$
+\end{upeshell}
+退出 \texttt{write} 也可以通过按 DELETE 键完成. 注意, 用户的打字错误并不会出
+现在另一个用户的终端上.
+
+如果目标用户还没有登录系统, 或者是他不想被打扰, 那么发送消息的用户就会看到相
+应的通知. 如果目标用户已经登录, 但是过了一会儿仍然没有回应消息, 他可能一时不
+在, 也可能是正在忙于其他事情, 此时用户只需要按下 \upectl{d} 或 DELETE 键.
+如果用户不想被打扰, 就用 \texttt{mesg}(1).
+
+\subsection{新闻}
+\label{subsec:news}
+
+为了帮助用户阅读感兴趣的文章, 许多 UNIX 系统都提供了新闻服务, 使用新闻服务的
+命令是
+\begin{upeshell}
+$ ^news^
+\end{upeshell}
+许多 UNIX 系统通过电话联结成一个巨大的网络, 向附近的专家咨询关于
+\texttt{netnews} 与 USENET 的事情.
+
+\subsection{手册}
+\label{subsec:the_manual}
+
+用户需要了解的关于 UNIX 系统的绝大部分知识, 都可以在 \textit{UNIX Programmer's
+Manual} 中找到. 手册的第 1 节描述命令, 包括本章介绍的命令; 第 2 节描述系统
+调用, 它是本书第 \ref{chap:unix_system_calls} 章的主要内容; 第 6 节描述游戏.
+手册的其他部分描述 C 库函数, 文件格式, 以及系统管理 (在不同的系统手册中, 章节
+的编号可能有所不同). 不要忘记在手册的开头还有一个索引, 索引可以帮助用户快速找
+到感兴趣的命令. 手册还包含了一个关于系统如何工作的简短介绍.
+
+通常情况下该手册是在线存放的, 因此用户可以直接在终端中阅读. 如果用户遇到问题,
+又找有到专家咨询, 这时候应该执行 \texttt{man} \textit{command-name}, 打开命令
+的手册页.
