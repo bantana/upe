@@ -457,3 +457,46 @@ Manual} 中找到. 手册的第 1 节描述命令, 包括本章介绍的命令; 
 通常情况下该手册是在线存放的, 因此用户可以直接在终端中阅读. 如果用户遇到问题,
 又找有到专家咨询, 这时候应该执行 \texttt{man} \textit{command-name}, 打开命令
 的手册页.
+\marginpar{11}
+例如, 为了阅读命令 \texttt{who} 的手册, 键入
+\begin{upeshell}
+$ ^man who^
+\end{upeshell}
+同样, 阅读 \texttt{man} 手册的方式是
+\begin{upeshell}
+$ ^man man^
+\end{upeshell}
+
+\subsection{计算机辅助教程}
+\label{subsec:computer_aided_instruction}
+
+用户的系统可能有命令 \texttt{learn}, 它提供了一些计算机辅助教程, 包括文件
+系统, 基本命令, 编辑器, 文件准备, 甚至 C 程序设计, 打开教程的命令是
+\begin{upeshell}
+$ ^learn^
+\end{upeshell}
+如果系统有该命令, 它就会指导用户如何开始, 如果没有 \texttt{learn}, 尝试
+\texttt{teach}.
+
+\section{日常使用: 文件和常用命令}
+\label{sec:day_to_day_use_files_and_common_commands}
+
+UNIX 系统的信息都存放在 \upeterm{文件} (file) 中, 它就像办公室里的普通文件.
+每个文件都有它自己的名字, 内容, 存放位置, 还有一些管理信息, 例如该文件属于
+谁, 有多大. 文件的内容可以是一个字母, 一张地址表, 程序的源代码, 某个程序的输
+入数据, 可执行程序, 以及其他的非文本格式数据.
+
+UNIX 的文件系统保证了用户在管理自己的私有文件时, 不会干扰属于其他用户的文件,
+同样, 其他用户也不会干扰你的私有文件. 管理文件的命令非常多, 但现在我们只介
+绍最常用的命令. 第 \ref{chap:the_file_system} 章将对文件系统进行系统性的介绍,
+到那时我们就会介绍更多的关于文件的命令.
+
+\subsection{创建文件 --- 编辑器}
+\label{subsec:creating_files_the_editor}
+
+如果用户想要写一篇文档, 或开发一个程序, 那么如何才能把信息存放到机器中? 这
+些工作通常可以用 \upeterm{文本编辑器} (text editor) 完成, 它可以存放并操作计
+算机中的信息. 大部分 UNIX 系统都至少有一个 \upeterm{屏幕编辑器} (screen
+editor), 这类编辑器利用现代终端的能力, 在屏幕上即时显示用户的每一次修改所产
+生的效果, 其中最流行的两款编辑器是 \texttt{vi} 和 \texttt{emacs}. 我们不在这
+\marginpar{12}
