@@ -500,3 +500,48 @@ UNIX 的文件系统保证了用户在管理自己的私有文件时, 不会干�
 editor), 这类编辑器利用现代终端的能力, 在屏幕上即时显示用户的每一次修改所产
 生的效果, 其中最流行的两款编辑器是 \texttt{vi} 和 \texttt{emacs}. 我们不在这
 \marginpar{12}
+里介绍任意一种特定的屏幕编辑器, 一方面是由于印刷条件限制, 另一方面是因为不存
+在一种标准的屏幕编辑器.
+
+不过, 任意一个 UNIX 系统必定提供了编辑器 \texttt{ed}. \texttt{ed} 不依赖特定
+的终端功能, 所以它可以在任意类型的终端中工作. \texttt{ed} 还是某些关键程序的
+基础软件 (包括一些屏幕编辑器), 所以学习如何使用 \texttt{ed} 还是很有价值的.
+附录 \ref{chap:editor_summary} 包含了 \texttt{ed} 的详细介绍.
+
+不管用户用哪一种编辑器, 都需要学习如何用它创建文件. 为了具体一点, 我们以
+\texttt{ed} 为例进行说明, 从而确保用户可以在自己的系统重复我们的操作. 但是,
+如果用户有自己喜欢的编辑器, 应该尽一切办法学习如何使用它.
+
+为了用 \texttt{ed} 创建一个文件 \texttt{junk}, 并输入一些文本, 执行:
+\begin{upeshell}
+$ ^ed^				#Invokes the text editor#
+^a^				+\texttt{ed}+# command to add text#
+#now type in
+whatever text you want ...#
+^.^				# Type a `.' by itself to stop adding text#
+^w junk^			# Write your text into a file called junk#
+39				+\texttt{ed}+# prints number of characters written#
+^q^				#Quit #+\texttt{ed}+
+$
+\end{upeshell}
+命令 \texttt{a} (``append'') 告诉 \texttt{ed} 开始接收文本. ``.'' 标志文本
+结束, 它必须单独占据一行, 在键入单独的句点之间, 所有的 \texttt{ed} 命令都不
+会被识别, 它们都会被当成普通的文本.
+
+命令 \texttt{w} 把用户输入的文本存放到文件中, ``\texttt{w junk}'' 把前面输入
+的内容存放到名为 \texttt{junk} 的文件中. 文件名可以按照用户的意愿随意命名,
+我们把它叫到 \texttt{junk} 是为了说明该文件并不重要.
+
+写完文件后, \texttt{ed} 打印写到文件中的字符个数. 在执行 \texttt{w} 之前, 前
+面输入的文本不会写到文件中, 所以如果用户中途挂起会话, 然后回家去了, 那么文本
+就不会写到文件中. (如果用户正在编辑时连接挂断, 那么前面输入的内容会存放到名
+为 \texttt{ed.hup} 的文件中, 这样用户就可以在下一次会话时继续之前的工作)
+如果在编辑时系统崩溃 (由于软件或硬件故障, 系统停止工作), 那么文件只含有崩溃
+前最后一次执行 \texttt{w} 命令时写进去的内容. 一旦执行 \texttt{w}, 文本就会
+永久地记录在文件中, 以后用户可以用下面的命令访问文件中的内容:
+\begin{upeshell}
+$ ^ed junk^
+\end{upeshell}
+
+当然, 用户也可以修改之前输入的文本. 等一切都做完后, 命令 \texttt{q} (``quit'')
+退出编辑器.
