@@ -545,3 +545,57 @@ $ ^ed junk^
 
 当然, 用户也可以修改之前输入的文本. 等一切都做完后, 命令 \texttt{q} (``quit'')
 退出编辑器.
+
+\marginpar{13}
+\subsection{目录中有哪些文件?}
+\label{subsec:what_files_are_out_there}
+
+创建 2 个文件, 分别叫做 \texttt{junk} 和 \texttt{temp}:
+\begin{upeshell}
+$ ^ed^
+^a^
+^To be or not to be^
+^.^
+^w junk^
+19
+^q^
+$ ^ed^
+^a^
+^That is the question.^
+^.^
+^w temp^
+22
+^q^
+$
+\end{upeshell}
+\texttt{ed} 计算的字符数包括每行末尾的 \upeterm{换行符} (newline), 系统用它
+来表示回车键.
+
+命令 \texttt{ls} 列出目录中的文件 (不包括文件中的内容):
+\begin{upeshell}
+$ ^ls^
+junk
+temp
+$
+\end{upeshell}
+上面列出的就是我们刚刚创建的 2 个文件 (可能还有其他用户创建的文件). 文件名
+自动按照字母顺序排列.
+
+和大多数命令一样, \texttt{ls} 提供了很多用于改变默认行为的 \upeterm{选项}
+(option). 在命令行上, 选项跟在命令的后面. 选项通常由一个减号 `-' 和一个表示
+选项意义的字母组成. 例如, \texttt{ls -t} 使得文件名按照文件的最后修改时间
+进行排序, 最近修改的文件先出现.
+\begin{upeshell}
+$ ^ls -t^
+temp
+junk
+$
+\end{upeshell}
+选项 \texttt{-l} 使 \texttt{ls} 列出更详细的信息:
+\begin{upeshell}
+$ ^ls -l^
+total 2
+-rw-r--r-- 1 you	19 Sep 26 16:25 junk
+-rw-r--r-- 1 you	22 Sep 26 16:26 temp
+$
+\end{upeshell}
