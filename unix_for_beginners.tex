@@ -599,3 +599,25 @@ total 2
 -rw-r--r-- 1 you	22 Sep 26 16:26 temp
 $
 \end{upeshell}
+
+\marginpar{14}
+``\texttt{total 2}'' 指出了文件所消耗的磁盘块个数, 一个磁盘块通常是 512 或
+1024 个字节. 字串 \texttt{-rw-r--r--} 指出了各类用户对文件的访问权限, 在这
+个例子中, 文件所有者 (\texttt{you}) 可以读写文件, 但是其他用户只能读文件. 随
+后的 ``\texttt{1}'' 指出了文件的链接数, 我们会在第 \ref{chap:the_file_system}
+章介绍链接. ``\texttt{you}'' 是文件的所有人, 也就是创建该文件的用户.
+\texttt{19} 和 \texttt{22} 是文件中包含的字符个数, 它们和 \texttt{ed} 保存文
+件时打印的字符个数相同. 日期和时间指出了文件最后一次修改是在什么时候.
+
+选项可以组合: \texttt{ls -lt} 打印的内容和 \texttt{ls -l} 相同, 但是文件名
+按照最后修改时间排序. 选项 \texttt{-u} 指出了文件最后一次被访问是在什么时候:
+\texttt{ls -lut} 输出一个长 (\texttt{-l}) 列表, 最近被访问的文件先打印.
+用户也可以在命令的后面跟上文件名, 此时 \texttt{ls} 只会打印该文件的信息:
+\begin{upeshell}
+$ ^ls -l junk^
+-rw-r--r-- 1 you	19 Sep 26 16:25 junk
+$
+\end{upeshell}
+
+跟在程序名后面的字串, 例如上面例子中的 \texttt{-l} 和 \texttt{junk}, 叫做
+程序的 \upeterm{参数} (argument). 参数通常是命令要用到的选项或文件名.
