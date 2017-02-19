@@ -642,3 +642,46 @@ $ ^ls -l -t^		#Doesn't work in 7th Edition#
 
 现在读者手上已经有了几个文件, 那么应该如何查看文件当中的内容? 有很多程序可以
 做到, 也许将来还会更多. 其中一种办法是使用编辑器:
+\marginpar{15}
+\begin{upeshell}
+$ ^ed junk^
+19				#+\texttt{ed}+ reports 19 characters in junk#
+^1,$p^				#Print lines 1 through last#
+To be or not to be		#File has only one line#
+^q^				#All done#
+$
+\end{upeshell}
+开始时 \texttt{ed} 会打印 \texttt{junk} 的字符个数, 命令 \texttt{1,\$p} 告诉
+\texttt{ed} 打印文件中的所有行. 当读者学会如何使用编辑器后, 就可以选择性地打
+印文件中的部分内容.
+
+有时候不能使用编辑器来打印文件, 比如文件有好几千行, 而 \texttt{ed} 可能没办
+法处理这么大的文件. 此外, \texttt{ed} 一次只能打印一个文件, 而读者可能想一次
+打印多个文件. 幸好, 还有其他命令可供选择.
+
+首先是 \texttt{cat}, 在所有的打印命令中, 它是最简单的一个. \texttt{cat} 打印
+参数指定的所有文件的内容:
+\begin{upeshell}
+$ ^cat junk^
+To be or not to be
+$ ^cat temp^
+That is the question
+$ ^cat junk temp^
+To be or not to be
+That is the question
+$
+\end{upeshell}
+一个或多个文件的内容被连接 (catenate\footnote{catenate 是 concatenate 的不太
+著名的同义词}) 到终端上, 各个文件之间不会有其他东西出现.
+
+对于比较短的文件来说这样做没什么问题, 但是如果文件比较长, 而终端的波特率又比
+较高, 为了避免 \texttt{cat} 的输出冲刷屏幕, 用户必须快速地按下 \upectl{s}, 从
+而暂停 \texttt{cat} 的输出. 虽然每个 UNIX 系统都提供了一个用来在视频终端上一
+次打印一屏的命令, 但并不存在一个 ``标准'' 的命令. 这个命令可能是 \texttt{pg}
+或 \texttt{more}. 我们自己实现的叫作 \texttt{p}, 第
+\ref{chap:programming_with_standard_io} 章将会介绍如何实现这个程序.
+
+类似于 \texttt{cat}, \texttt{pr} 打印参数中指定的所有文件的内容, 但是会以一
+种更适于行式打印机的形式打印出来: 每一页是 66 行 (11 英寸) 高, 并带有文件的
+修改日期和时间, 页码, 文件名, 为了另起一页而额外添加的行. 因此, 为了让
+\texttt{junk} 的输出更加美观, 而且要另起一页打印 \texttt{temp}:
